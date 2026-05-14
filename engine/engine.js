@@ -16,6 +16,7 @@ if (!gl) {
             const dpr = window.devicePixelRatio || 1;
                 const w = Math.floor(window.innerWidth * dpr);
                     const h = Math.floor(window.innerHeight * dpr);
+
                         if (canvas.width !== w || canvas.height !== h) {
                                 canvas.width = w;
                                         canvas.height = h;
@@ -60,6 +61,7 @@ if (!gl) {
                                                                                                     const sh = gl.createShader(type);
                                                                                                         gl.shaderSource(sh, source);
                                                                                                             gl.compileShader(sh);
+
                                                                                                                 if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
                                                                                                                         console.error(gl.getShaderInfoLog(sh));
                                                                                                                                 throw new Error("Erreur compilation shader");
@@ -70,10 +72,12 @@ if (!gl) {
                                                                                                                                         function createProgram(vsSrc, fsSrc) {
                                                                                                                                             const vs = compileShader(gl.VERTEX_SHADER, vsSrc);
                                                                                                                                                 const fs = compileShader(gl.FRAGMENT_SHADER, fsSrc);
+
                                                                                                                                                     const prog = gl.createProgram();
                                                                                                                                                         gl.attachShader(prog, vs);
                                                                                                                                                             gl.attachShader(prog, fs);
                                                                                                                                                                 gl.linkProgram(prog);
+
                                                                                                                                                                     if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
                                                                                                                                                                             console.error(gl.getProgramInfoLog(prog));
                                                                                                                                                                                     throw new Error("Erreur link program");
@@ -116,6 +120,7 @@ if (!gl) {
 
                                                                                                                                                                                                               // Boucle
                                                                                                                                                                                                               let start = performance.now();
+
                                                                                                                                                                                                               function loop() {
                                                                                                                                                                                                                   const t = (performance.now() - start) / 1000.0;
 
